@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>asci-art-web</title>
+    <link rel="stylesheet" type="text/css" href="/style/style.css" />
+  </head>
+
+  <body>
+    <div class="menu">
+      <main>
+        <h1>ascii-art-web</h1>
+        <hr />
+        <form method="post" action="/ascii-art">
+          <textarea
+            name="user_input"
+            placeholder="put something"
+            maxlength="1000"
+            required=""
+            class="entrer"
+          ></textarea>
+
+          <fieldset>
+            
+            <legend>
+              <h2>chose a style</h2>
+            </legend>
+            <label style="display: inline-block"
+              ><input
+                type="radio"
+                id="boton"
+                name="style"
+                value="standard"
+                checked
+              /><strong>Standard</strong></label
+            >
+            <label style="display: inline-block"
+              ><input
+                type="radio"
+                id="boton2"
+                name="style"
+                value="shadow"
+              /><strong>Chadow</strong>
+            </label>
+            <label style="display: inline-block"
+              ><input
+                type="radio"
+                id="boton3"
+                name="style"
+                value="thinkertoy"
+              /><strong>Thinkrtoy</strong></label
+            >
+          </fieldset>
+
+          <button id="mon-button" type="submit"><strong>submit</strong></button>
+        </form>
+      </main>
+      
+      <footer>
+        <p>NO-Copyright</p>
+      </footer>
+    </div>
+  </body>
+</html>
