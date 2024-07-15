@@ -12,5 +12,9 @@ RUN apk --no-cache add bash
 
 RUN go build -o main .
 
+LABEL ProjectName="ASCII-ART-DOCKERIZE"
+
+LABEL Version="1.0"
+
 # Commande pour exécuter l'application une fois que le conteneur Docker est lancé
 CMD ["./main"]
