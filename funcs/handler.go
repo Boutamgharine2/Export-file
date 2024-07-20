@@ -28,20 +28,27 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "methode not allowed", http.StatusMethodNotAllowed)
 		return
 	}
+	
 
 	tmpl, err := template.ParseFiles("tmplt/my.html")
+	
 	if err != nil {
 		http.Error(w, "internal server error 500", http.StatusInternalServerError)
 	}
+	
 	r.ParseForm()
+	
 
 	banner := r.Form.Get("style")
+	
 	input := r.Form.Get("user_input")
+	
 	if (banner == "" || input == "") || (banner != "standard" && banner != "shadow" && banner != "thinkertoy") {
 		http.Error(w, "Bad Request 400", http.StatusBadRequest)
 		return
 	}
-	v := Printing(input, banner)
-
+	v := Printing(input,banner)
+	
+   
 	tmpl.Execute(w, v)
 }
