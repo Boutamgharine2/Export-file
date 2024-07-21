@@ -8,8 +8,8 @@ body {
 
 h1 {
     
+    text-align: center;
     font-style:oblique;
-    margin: 50px;
     text-decoration: underline;
     font-size: 40px;
 
@@ -40,7 +40,7 @@ textarea::placeholder {
 }
 textarea{
     font-family: inherit;
-        width: 500px;
+        width: 500PX;
         border: 0;
         border-bottom: 2px solid #961919;
         outline: 0;
@@ -55,10 +55,10 @@ textarea{
 }
 
 pre {
+    text-align: center;
     overflow:  auto ;
     padding-bottom: 100px;
-    margin-left: 500px;
-    margin-right: 500px;
+   
     padding-top: 100px;
 }
 
@@ -90,7 +90,7 @@ pre {
     line-height: 2em;
     text-align: center;
     background-color: chartreuse;
-    background-size: 300%;
+    background-size: 30%;
     border-radius: 30px;
     z-index: 1;
     margin-left: 0%;
@@ -101,6 +101,13 @@ pre {
 }
 
 fieldset {
-    margin-left: 700px;
-    margin-right: 700px;
+    text-align: center;
+} 
+@media only screen and (max-width: 600px) {
+    textarea{
+        width: 200px;
+    }
+    
+
+    
 }
