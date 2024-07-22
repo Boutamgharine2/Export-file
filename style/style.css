@@ -73,7 +73,7 @@ pre {
         display: inline-block; /* Affichage en ligne */
         margin-top: 10px; /* Marge supérieure */
         border-radius: 30px;
-        background-color: chartreuse;
+        background-color: #DEAC80;
         font-size: 19px;
         font-family: inherit;
 
@@ -90,7 +90,7 @@ pre {
     height: 3em;
     line-height: 2em;
     text-align: center;
-    background-color: chartreuse;
+    background-color: #DEAC80;
     background-size: 30%;
     border-radius: 30px;
     z-index: 1;
