@@ -1,6 +1,6 @@
 body {
    
-    background-color: bisque;
+    background-color: rgb(154, 153, 160);
     text-align: center;
     
 }
@@ -25,9 +25,8 @@ h2 {
 
 label {
     
-    display:ruby-base;
-    margin-top: 5px;
-    margin-bottom: 100px;
+    display:block;
+   
     font-size: 20px;
 }
 
@@ -59,9 +58,11 @@ pre {
     text-align: center;
     overflow:  auto ;
     padding-bottom: 100px;
+    background: white;
    
     padding-top: 100px;
 }
+
 
 
 .rotourn{
@@ -97,9 +98,14 @@ pre {
     margin-left: 0%;
     padding:calc();
     cursor: pointer;
+    box-shadow: linear-gradient(90deg, #c5c7ca, #bdb077dc, #bd8c05);
+}
 
     
-}
+
+#mon-button:hover {
+    background: linear-gradient(90deg, #c5c7ca, #bdb077dc, #bd8c05);
+  }
 
 fieldset {
     text-align: center;
