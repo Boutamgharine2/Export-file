@@ -53,6 +53,7 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 	input := r.Form.Get("user_input")
 
 	if (banner == "" || input == "") || (banner != "standard" && banner != "shadow" && banner != "thinkertoy") {
+		
 		http.Error(w, "Bad Request 400", http.StatusBadRequest)
 		return
 	}
