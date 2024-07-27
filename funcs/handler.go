@@ -41,7 +41,7 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl, err := template.ParseFiles("tmplt/my.html")
+	tmpl,err := template.ParseFiles("tmplt/my.html")
 	if err != nil {
 		http.Error(w, "internal server error 500", http.StatusInternalServerError)
 	}
@@ -54,13 +54,25 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 
 	if (banner == "" || input == "") || (banner != "standard" && banner != "shadow" && banner != "thinkertoy") {
 		
-		http.Error(w, "Bad Request 400", http.StatusBadRequest)
+		tmpl, err := template.ParseFiles("tmplt/my.html")
+		if err != nil {
+			fmt.Println("hey")
+		}
+		w.WriteHeader(http.StatusBadRequest)
+		//r.ParseForm()
+		
+		 tmpl.Execute(w,nil)
+		if err != nil {
+			http.Error(w, "internal server error 500", http.StatusInternalServerError)
+		}
+	
 		return
 	}
 	v := Printing(input, banner)
 
 	tmpl.Execute(w, v)
 }
+
 
 func (r *Data) Extrait() {
 	dir, err1 := os.Open("Fonts")
