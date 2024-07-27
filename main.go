@@ -17,4 +17,5 @@ func main() {
 	http.Handle("/style/", http.StripPrefix("/style/", http.FileServer(http.Dir("style")))) // Définition du gestionnaire pour les fichiers statiques
 	fmt.Println("(http://localhost:5050/)server started on port", port)
 	http.ListenAndServe(port, nil)
+	
 }

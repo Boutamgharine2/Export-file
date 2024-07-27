@@ -1,12 +1,23 @@
 package ascii
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
+	"os"
 )
 
+type Data struct {
+	Tableau []string
+	input   string
+}
+
+var output Data
+
 func Handler_rout(w http.ResponseWriter, r *http.Request) {
+	output.Extrait()
 	
+
 	if r.URL.Path != "/" { // handel if url was not valide
 		http.Error(w, "page not found :)", http.StatusNotFound)
 		return
@@ -17,12 +28,11 @@ func Handler_rout(w http.ResponseWriter, r *http.Request) {
 	}
 	tmpl, err := template.ParseFiles("tmplt/index.html")
 	r.ParseForm()
-	Tableau := []string{"standard", "shadow", "thinkertoy"}
+	tmpl.Execute(w, output.Tableau)
+
 	if err != nil {
 		http.Error(w, "internal server error 500", http.StatusInternalServerError)
 	}
-
-	tmpl.Execute(w, Tableau)
 }
 
 func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
@@ -49,4 +59,21 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 	v := Printing(input, banner)
 
 	tmpl.Execute(w, v)
+}
+
+func (r *Data) Extrait() {
+	dir, err1 := os.Open("Fonts")
+	if err1 != nil {
+		fmt.Println(err1)
+	}
+
+	tr, err2 := dir.Readdirnames(-1)
+	if err2 != nil {
+		fmt.Println(err2)
+	}
+	r.Tableau = nil
+	for _, v := range tr {
+		r.Tableau = append(r.Tableau, v[:len(v)-4])
+	}
+	
 }

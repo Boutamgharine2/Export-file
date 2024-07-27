@@ -1,6 +1,7 @@
 package ascii
 
 import (
+	"fmt"
 	"os"
 	"strings"
 )
@@ -8,11 +9,17 @@ import (
 func Printing(s, r string) string {
 	s = strings.ReplaceAll(s, "\r\n", "\n")
 	if Checkinput(s) {
-		style := r + ".txt"
+		f, err := os.Open("Fonts/" +r+".txt")
+		if err != nil {
+			fmt.Println("error :", err)
+		}
+		
 
-		Filestyle, _ := os.Open(style)
+		
+
+		
 		v := strings.Split(s, "\n")
-		h := PrintN(Filestyle, v)
+		h := PrintN(f, v)
 		return h
 	}
 	return "you need to choose a character from the ascii table."
