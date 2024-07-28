@@ -16,7 +16,6 @@ var output Data
 
 func Handler_rout(w http.ResponseWriter, r *http.Request) {
 	output.Extrait()
-	
 
 	if r.URL.Path != "/" { // handel if url was not valide
 		http.Error(w, "page not found :)", http.StatusNotFound)
@@ -41,7 +40,7 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	tmpl,err := template.ParseFiles("tmplt/my.html")
+	tmpl, err := template.ParseFiles("tmplt/my.html")
 	if err != nil {
 		http.Error(w, "internal server error 500", http.StatusInternalServerError)
 	}
@@ -53,26 +52,24 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 	input := r.Form.Get("user_input")
 
 	if (banner == "" || input == "") || (banner != "standard" && banner != "shadow" && banner != "thinkertoy") {
-		
-		tmpl, err := template.ParseFiles("tmplt/my.html")
-		if err != nil {
-			fmt.Println("hey")
-		}
-		w.WriteHeader(http.StatusBadRequest)
-		//r.ParseForm()
-		
-		 tmpl.Execute(w,nil)
+
+		tmpl, err := template.ParseFiles("tmplt/bad.html")
 		if err != nil {
 			http.Error(w, "internal server error 500", http.StatusInternalServerError)
 		}
-	
+
+		w.WriteHeader(http.StatusBadRequest)
+		// r.ParseForm()
+
+		tmpl.Execute(w, nil)
+		
+
 		return
 	}
 	v := Printing(input, banner)
 
 	tmpl.Execute(w, v)
 }
-
 
 func (r *Data) Extrait() {
 	dir, err1 := os.Open("Fonts")
@@ -88,5 +85,4 @@ func (r *Data) Extrait() {
 	for _, v := range tr {
 		r.Tableau = append(r.Tableau, v[:len(v)-4])
 	}
-	
 }
