@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 type Data struct {
@@ -39,7 +40,7 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "methode not allowed", http.StatusMethodNotAllowed)
 		return
 	}
-
+	w.Header().Set("", "")
 	tmpl, err := template.ParseFiles("tmplt/my.html")
 	if err != nil {
 		http.Error(w, "internal server error 500", http.StatusInternalServerError)
@@ -62,13 +63,22 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 		// r.ParseForm()
 
 		tmpl.Execute(w, nil)
-		
 
 		return
 	}
 	v := Printing(input, banner)
 
 	tmpl.Execute(w, v)
+}
+
+func DownloadHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w,"telecharger le fichiè!!")
+
+	w.Header().Set("Content-Type", "application/octet-stream")
+	w.Header().Set("Content-Disposition", "attachment; filename=\""+""+"\"")
+	w.Header().Set("Content-Length", strconv.FormatInt(8, 10))
+
+	http.ServeFile(w, r, "")
 }
 
 func (r *Data) Extrait() {
