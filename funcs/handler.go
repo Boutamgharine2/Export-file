@@ -13,7 +13,10 @@ type Data struct {
 	input   string
 }
 
-var output Data
+var (
+	output Data
+	v      string
+)
 
 func Handler_rout(w http.ResponseWriter, r *http.Request) {
 	output.Extrait()
@@ -66,19 +69,19 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 
 		return
 	}
-	v := Printing(input, banner)
+	v = Printing(input, banner)
 
 	tmpl.Execute(w, v)
 }
 
 func DownloadHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w,"telecharger le fichiè!!")
-
+	fileName := "downloaded.txt"
 	w.Header().Set("Content-Type", "application/octet-stream")
-	w.Header().Set("Content-Disposition", "attachment; filename=\""+""+"\"")
-	w.Header().Set("Content-Length", strconv.FormatInt(8, 10))
+	w.Header().Set("Content-Disposition", "attachment; filename=\""+fileName+"\"")
 
-	http.ServeFile(w, r, "")
+	w.Header().Set("Content-Length", strconv.Itoa(len(v)))
+
+	w.Write([]byte(v))
 }
 
 func (r *Data) Extrait() {
