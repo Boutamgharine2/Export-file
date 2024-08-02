@@ -61,6 +61,7 @@ pre {
     background: white;
    
     padding-top: 100px;
+    height: auto;
 }
 
 
@@ -86,7 +87,7 @@ pre {
     border:none;
     font-size: 19px;
     font-family: inherit;
-    color: #080808;
+    color: #ece9e9;
     width: 9em;
     height: 3em;
     line-height: 2em;

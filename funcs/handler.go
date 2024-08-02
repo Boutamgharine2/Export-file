@@ -25,6 +25,7 @@ func Handler_rout(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "page not found :)", http.StatusNotFound)
 		return
 	}
+	
 	if r.Method != http.MethodGet { // handel if url was not valide
 		http.Error(w, "methode not allowed", http.StatusMethodNotAllowed)
 		return
