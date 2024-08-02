@@ -54,6 +54,15 @@ func Handler_asci_art(w http.ResponseWriter, r *http.Request) {
 	banner := r.Form.Get("style")
 
 	input := r.Form.Get("user_input")
+	if !Checkinput(input) {
+		tmp, err := template.ParseFiles("tmplt/error.html")
+		if err != nil {
+			http.Error(w, "internal server error 500", http.StatusInternalServerError)
+		}
+		tmp.Execute(w, nil)
+		return
+
+	}
 
 	if (banner == "" || input == "") || (banner != "standard" && banner != "shadow" && banner != "thinkertoy") {
 

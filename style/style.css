@@ -65,10 +65,10 @@ pre {
 
 
 
-.rotourn{
+.rotourn, .DOWN{
   
         text-decoration: none; 
-        color: #040505; 
+        color: #ebecec; 
         padding: 10px 20px; /* Espacement interne du bouton */
         border: 1px solid #ccc; /* Bordure du bouton */
         display: inline-block; /* Affichage en ligne */
